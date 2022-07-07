@@ -1,0 +1,38 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px auto;
+    /* width: 1080px; */
+}
+
+.container {
+    /* width: 1080px;
+    height: 1080px; */
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.red-box, .black-box {
+    /* outline: 2px solid pink; */
+    height: 10px;
+    width: 10px;
+    width: 75px;
+    height: 75px;
+}
+
+.red-box {
+    background-color: red;
+}
+
+.black-box {
+    background-color: black;
+}
