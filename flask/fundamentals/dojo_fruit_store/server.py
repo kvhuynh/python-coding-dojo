@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from flask import Flask, render_template, request, redirect
 app = Flask(__name__)  
 
@@ -8,7 +9,8 @@ def index():
 @app.route('/checkout', methods=['POST'])         
 def checkout():
     print(request.form)
-    return render_template("checkout.html")
+    print(f"Charging {request.form['first_name']} for {int(request.form['strawberry']) + int(request.form['raspberry']) + int(request.form['apple'])} fruits.")
+    return render_template("checkout.html", form=request.form)
 
 @app.route('/fruits')         
 def fruits():
