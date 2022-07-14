@@ -1,0 +1,23 @@
+SELECT * FROM users;
+INSERT INTO users (id, first_name, last_name, email, created_at, updated_at) 
+VALUES
+(1, "susan", "huynh", "123@gmail.com", NOW(), NOW()),
+(2, "cuc", "nguyen", "123@gmail.com", NOW(), NOW()),
+(4, "kevin", "huynh", "123@gmail.com", NOW(), NOW())
+
+SELECT * FROM users
+WHERE id = 4;
+
+UPDATE users
+SET last_name = "Pancakes"
+WHERE id = 1
+
+
+DELETE FROM users WHERE id=2;
+
+SELECT * FROM users
+ORDER BY first_name asc
+
+SELECT * FROM users
+ORDER BY first_name desc
+

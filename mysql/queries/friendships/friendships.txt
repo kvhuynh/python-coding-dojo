@@ -1,0 +1,58 @@
+INSERT into users
+VALUES 
+(1, "Amy", "Giver", NOW(), NOW()),
+(2, "Eli", "Byers", NOW(), NOW()),
+(3, "Marky", "Mark", NOW(), NOW()),
+(4, "Big", "Bird", NOW(), NOW()),
+(5, "Kermit", "The Frog", NOW(),friendships NOW()),
+(6, "Kevin", "Huynh", NOW(), NOW());
+
+INSERT into friendships(users_id, friend_id)
+VALUES 
+(1, 2),
+(1, 4),
+(1, 6);
+
+SELECT * FROM friendships;
+
+INSERT into friendships(users_id, friend_id)
+VALUES 
+(2, 1),
+(2, 3),
+(2, 5),
+(2, 6);
+
+INSERT into friendships(users_id, friend_id)
+VALUES 
+(3, 2),
+(3, 5);
+
+INSERT into friendships(users_id, friend_id)
+VALUES 
+(4, 3);
+
+INSERT into friendships(users_id, friend_id)
+VALUES 
+(5, 1),
+(5, 6);
+
+INSERT into friendships(users_id, friend_id)
+VALUES 
+(6, 2),
+(6, 3);
+
+SELECT * FROM friendships JOIN users ON users_id = users.id 
+LEFT JOIN users AS user2 ON friend_id = users.id;
+
+
+
+SELECT * FROM friendships JOIN users ON users_id = users.id 
+LEFT JOIN users AS user2 ON friend_id = users.id
+WHERE users.id = 1;
+
+SELECT users_id, MAX(COUNT(friend_id)) FROM friendships;
+-- GROUP BY friend_id
+-- ORDER BY COUNT(friend_id)
+
+
+

@@ -1,0 +1,7 @@
+SELECT * FROM names;
+INSERT INTO names
+VALUES(1, "kevin", NOW(), NOW())
+VALUES(2, "susan", NOW(), NOW())
+UPDATE names
+SET names = "bob"
+WHERE id = 1;

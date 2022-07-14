@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <link rel="stylesheet" href="..\static\styles.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="container h- d-flex flex-column align-items-center justify-content-center">
+        <h1>Welcome to the Great Number Game!!!</h1>
+        <p>I am thinking of a number between 1 and 100</p>
+            <div class="card" style="width: 18rem; height: 20rem;">
+                <div class="h-100 d-flex flex-column align-items-center justify-content-center padding">
+                    {% if too_high %}
+                    <div class="card" style="width: 18rem; height: 20rem; background-color: red; color: white;">
+                        <div class="h-100 d-flex flex-column align-items-center justify-content-center padding">
+                            <h5 class="card-title">Your guess</h5>
+                                <p>{{too_high}}</p>
+                            <form action="/guess" method="post">
+                                <input name="user-guess" type="number">
+                            </form>
+                          <a href="#" class="btn btn-primary">guess</a>
+                        </div>
+                    </div>
+                    {% elif too_low %}
+                    <div class="card" style="width: 18rem; height: 20rem; background-color: red; color: white;">
+                        <div class="h-100 d-flex flex-column align-items-center justify-content-center padding">
+                            <h5 class="card-title">Your guess</h5>
+                                <p>{{too_low}}</p>
+                            <form action="/guess" method="post">
+                                <input name="user-guess" type="number">
+                            </form>
+                          <a href="#" class="btn btn-primary">guess</a>
+                        </div>
+                    </div>
+                    {% elif correct %}
+                    <div class="card" style="width: 18rem; height: 20rem; background-color: green; color: white;">
+                        <div class="h-100 d-flex flex-column align-items-center justify-content-center padding">
+                            <h5 class="card-title">Your guess</h5>
+                                <p>{{correct}}</p>
+                                <p>it took you {{session["count"]}} tries!</p>
+                            <form action="/leader_board" method="post">
+                                <input name="user-name" type="text">
+                            </form>
+                          <a href="#" class="btn btn-primary">submit name</a>
+                        </div>
+                    </div>
+                    {% elif win %}
+                    <div class="card" style="width: 18rem; height: 20rem;">
+                        <div class="h-100 d-flex flex-column align-items-center justify-content-center padding">
+                            <h5 class="card-title">Leader board</h5>
+                                {% for name in winners %}
+                                    <p>{{name}}: {{winners[name]}}</p>
+                                {% endfor %}
+                        </div>
+                    </div>
+                    {% elif lost %}
+                    <div class="card" style="width: 18rem; height: 20rem;">
+                        <div class="h-100 d-flex flex-column align-items-center justify-content-center padding">
+                            <h5 class="card-title">You Lost!</h5>
+                          <a href="#" class="btn btn-primary">Try again</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="card" style="width: 18rem; height: 20rem;">
+                        <div class="h-100 d-flex flex-column align-items-center justify-content-center padding">
+                            <h5 class="card-title">Your guess</h5>
+                                <p>{{correct}}</p>
+                            <form action="/guess" method="post">
+                                <input name="user-guess" type="number">
+                            </form>
+                          <a href="#" class="btn btn-primary">guess</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

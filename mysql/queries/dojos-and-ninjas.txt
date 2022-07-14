@@ -1,0 +1,42 @@
+INSERT INTO dojos
+VALUES 
+(1, "SEATTLE", NOW(), NOW()),
+(2, "CHICAGO", NOW(), NOW()),
+(3, "BURBANK", NOW(), NOW())
+
+DELETE FROM dojos;
+
+INSERT INTO dojos
+VALUES 
+(1, "SEATTLE", NOW(), NOW()),
+(2, "CHICAGO", NOW(), NOW()),
+(3, "BURBANK", NOW(), NOW())
+
+INSERT INTO ninjas
+VALUES
+(1, 1, "kevin", "huynh", 22, NOW(), NOW()),
+(2, 1,"asdf", "huynh", 22, NOW(), NOW()),
+(3, 1, "ddd", "huynh", 22, NOW(), NOW())
+
+SELECT * FROM ninjas
+JOIN dojos ON dojos.id = ninjas.dojo_id
+
+INSERT INTO ninjas
+VALUES
+(4, 2, "kevin", "huynh", 22, NOW(), NOW()),
+(5, 2,"asdf", "huynh", 22, NOW(), NOW()),
+(6, 2, "ddd", "huynh", 22, NOW(), NOW())
+
+SELECT * FROM ninjas
+JOIN dojos ON dojos.id = ninjas.dojo_id
+
+SELECT * FROM ninjas
+WHERE dojo_id = 1;
+
+SELECT * FROM ninjas
+WHERE dojo_id = 2;
+
+select dojo_id from ninjas
+WHERE id = 9
+
+

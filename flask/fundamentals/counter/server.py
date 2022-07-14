@@ -4,7 +4,6 @@ from flask import Flask, render_template, request, redirect, session
 app = Flask(__name__)  
 
 app.secret_key = os.urandom(12)
-
 @app.route('/')         
 def index():
     if 'count' in session:
@@ -13,10 +12,15 @@ def index():
     else:
         print("key 'count' does NOT exist")
         session["count"] = 1
-    if request.form["reset"] == "RESET":
-        print("yo")
     print(session)
     return render_template("index.html")
+
+@app.route('/increment', methods=["POST"])
+def increment():
+    print(request.form)
+    if request.form["add-one"] == "Click":
+        session["count"] += 1
+    return redirect("/")
 
 @app.route('/add_two')
 def add_two():
@@ -29,11 +33,11 @@ def add_two():
     print(session)
     return render_template("index.html")
 
-@app.route('/destroy_session')
-def redirect():
-    session.clear()		# clears all keys
-    session.pop('key_name')		# clears a specific key
-    redirect("index.html")
+@app.route('/destroy_session', methods=["POST"])
+def destroy():
+    session.clear()
+    print("yo33")
+    return redirect('/')
 
 # @app.route('/checkout', methods=['POST'])         
 # def checkout():
