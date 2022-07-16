@@ -1,0 +1,20 @@
+.test *{
+    margin: 10px 0px;
+    flex: 1;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.form * {
+    color: white;
+}
+
+.form input {
+    color: black;
+}
+
+p {
+    color: white;
+}
