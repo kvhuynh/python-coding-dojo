@@ -1,1 +1,0 @@
-pp.secret_key = "shhhhhh"

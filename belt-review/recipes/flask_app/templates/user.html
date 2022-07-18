@@ -10,11 +10,30 @@
         <title>New Dojo</title>
     </head>
     <body>
-        <div class="container bg-secondary test">
+        <div class="container bg test">
             <h1>Welcome {{user}}!</h1>
-            <a href="/clear_session">
-                <button type="submit" class="btn btn-primary">Logout</button>
-            </a>
+            <div class="container d-flex">
+                <p>All posted recipes:</p>
+                <div class="container d-flex align-items-start">
+                    <a href="/create_recipe">+ Create </a>
+                    <a href="/clear_session">
+                        <button type="submit" class="btn btn-primary ">Logout</button>
+                    </a>
+                </div>
+
+            </div>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Under 30</th>
+                    <th scope="col">Posted By</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
         </div>
     </body>
 </html>

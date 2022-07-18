@@ -5,8 +5,7 @@ import re
 
 DATABASE = "recipes"
 
-EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
-class User:
+class Recipe:
     def __init__(self, data):
         self.id = data['id']
         self.first_name = data["first_name"]
@@ -19,22 +18,17 @@ class User:
 # ---------- VALIDATE ---------- #
 
     @staticmethod
-    def validate_user(user):
+    def validate_recipe(recipe):
         is_valid = True # we assume this is true
-        if len(user['first_name']) < 2 and not user['first_name'].isalpha():
-            flash("First name must be at least 2 characters and must be all alphabetical", "register")
+        if len(recipe["recipe_name"]) < 4 and not recipe["recipe_name"].isalpha():
+            flash("Recipe name must be at least 3 characters and must be all alphabetical")
             is_valid = False
-        if len(user['last_name']) < 2 and not user['last_name'].isalpha():
-            flash("Last name must be at least 2 characters and must be all alphabetical", "register")
+        if len(recipe["description"]) < 4 and not recipe["description"].isalpha():
+            flash("Last name must be at least 3 characters and must be all alphabetical")
             is_valid = False
-        if not EMAIL_REGEX.match(user['email']): 
-            flash("Invalid email address!", "register")
+        if len(recipe["instructions"]) < 4:
+            flash("Instructions must be at least 3 characters.")
             is_valid = False
-        if len(user['password']) < 8:
-            flash("Password must be at least 8 characters.", "register")
-            is_valid = False
-        if user['password'] != user['password_confirmation']:
-            flash("Passwords do not match", "register")
         return is_valid
 
 

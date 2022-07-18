@@ -1,16 +1,14 @@
-from flask_app import app
-from flask import Flask, render_template, request, redirect, session, flash
-from flask_app.models.user import User
-from flask_bcrypt import Bcrypt
-bcrypt = Bcrypt(app)
+from flask_app import app, bcrypt
+from flask import render_template, request, redirect, session, flash
 
+# This imports model file
+from flask_app.models.user import User
 # ---------- CREATE ---------- #
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
-# ---------- READ ---------- #
 
 @app.route("/validate_new_user", methods=["POST"])
 def validate():
@@ -60,5 +58,6 @@ def destroy_session():
     session.clear()
     return redirect("/")
 
-
-
+# @app.route("/create_recipe")
+# def create_recipe():
+#     return render_template("new-recipe.html")
