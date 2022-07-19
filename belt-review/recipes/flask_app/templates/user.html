@@ -32,6 +32,13 @@
                   </tr>
                 </thead>
                 <tbody>
+                    {% for recipe in recipe_list %}
+                    <tr>
+                        <th>{{recipe.recipe_name}}</th>
+                        <th>{{recipe.is_under_30}}</th>
+                        <th>{{recipe.user_id}}</th>
+                    </tr>
+                    {% endfor %}
                 </tbody>
               </table>
         </div>

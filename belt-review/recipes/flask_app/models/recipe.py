@@ -1,19 +1,21 @@
 # import the function that will return an instance of a connection
+from operator import methodcaller
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-import re
 
 DATABASE = "recipes"
 
 class Recipe:
     def __init__(self, data):
         self.id = data['id']
-        self.first_name = data["first_name"]
-        self.last_name = data["last_name"]
-        self.email = data["email"]
-        self.password = data["password"]
+        self.user_id = data["user_id"]
+        self.recipe_name = data["recipe_name"]
+        self.description = data["description"]
+        self.instructions = data["instructions"]
+        self.is_under_30 = data["is_under_30"]
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        #join two tables first
 
 # ---------- VALIDATE ---------- #
 
@@ -36,20 +38,13 @@ class Recipe:
 
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM ninjas;"
+        query = "SELECT * FROM recipes;"
         results = connectToMySQL('recipes').query_db(query)
         users = []
         for u in results:
             users.append( cls(u) )
+        print(users)
         return users
-
-    @classmethod
-    def get_one(cls,data):
-        print(data)
-        query  = "SELECT * FROM users WHERE id = %(id)s";
-        result = connectToMySQL('recipes').query_db(query,data)
-        print(result)
-        return cls(result[0])
 
     @classmethod
     def get_by_email(cls, data):
@@ -60,11 +55,16 @@ class Recipe:
             return False
         return cls(result[0])
 
+    @classmethod
+    def join(cls, data):
+        query = "SELECT * FROM recipes JOIN users ON users.id = recipes.user_id;"
+        results = connectToMySQL(DATABASE).query_db(query, data)
+
 # ---------- SAVE ---------- #
         
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (%(first_name)s,%(last_name)s,%(email)s, %(password)s, NOW(), NOW());"
+        query = "INSERT INTO recipes (user_id, recipe_name, instructions, description, is_under_30) VALUES (%(user_id)s, %(recipe_name)s,%(instructions)s,%(description)s, %(is_under_30)s);"
         # comes back as the new row id
         result = connectToMySQL('recipes').query_db(query,data)
         return result

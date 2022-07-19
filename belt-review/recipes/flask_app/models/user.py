@@ -66,6 +66,7 @@ class User:
             return False
         return cls(result[0])
 
+
 # ---------- SAVE ---------- #
         
     @classmethod

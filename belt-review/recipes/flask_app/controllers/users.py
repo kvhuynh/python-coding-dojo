@@ -3,6 +3,7 @@ from flask import render_template, request, redirect, session, flash
 
 # This imports model file
 from flask_app.models.user import User
+from flask_app.models.recipe import Recipe
 # ---------- CREATE ---------- #
 
 @app.route("/")
@@ -49,7 +50,7 @@ def signed_in():
     }
     user = User.get_one(data)
     print(user)
-    return render_template("user.html", user=user.first_name)
+    return render_template("user.html", user=user.first_name, recipe_list=Recipe.get_all())
 
 
 # ---------- DELETE ---------- #

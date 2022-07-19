@@ -12,13 +12,15 @@ def validate_recipe():
     if is_valid:
         print("valid!")
         data = {
+            "user_id": session["user_id"],
             "recipe_name": request.form["recipe_name"],
             "description": request.form["description"],
             "instructions": request.form["instructions"],
             "date-cooked": request.form["date_cooked"],
             "is_under_30": request.form["is_under_30"]
         }
-        # user_id = Recipe.save(data)
+        print(data)
+        Recipe.save(data)
         # session["user_id"] = user_id
         return redirect("/user")
     return redirect("/create_recipe")
