@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>{{recipe.recipe_name}}</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <h1>Add New Recipe</h1>
+        </div>
+        <div>
+            <a href="/">dashboard</a>
+            <a href="/user/logout">logout</a>
+        </div>
+        <div class="mb-3">
+            Name: {{ recipe.recipe_name }}
+            <br>
+        </div>
+        <div class="mb-3">
+            Description: {{ recipe.description }}
+        </div>
+        <div class="mb-3">
+            <p>Recipe Instructions: {{ recipe.instructions }}</p>{{ recipe.instructions }}
+        </div>
+
+        <a href="/dashboard">
+            <button type="submit" class="btn btn-success">Return Home</button>
+        </a>
+
+        </div>
+    </div> 
+  </body>
+</html>
