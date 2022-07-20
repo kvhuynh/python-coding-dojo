@@ -16,10 +16,13 @@
             <h1>Add New Recipe</h1>
         </div>
         <div>
-            <a href="/">dashboard</a>
-            <a href="/user/logout">logout</a>
+            <a href="/">
+                <button type="submit" class="btn btn-success ">Dashboard</button>
+            </a>
+            <a href="/user/logout">
+                <button type="submit" class="btn btn-primary ">Logout</button>
+            </a>
         </div>
-
         <div class="row">
             <form action="/recipe/{{recipe.id}}/update" method="post">
                 <div class="mb-3">

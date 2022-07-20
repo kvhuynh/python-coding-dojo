@@ -1,7 +1,3 @@
-# import the function that will return an instance of a connection
-from operator import methodcaller
-
-from matplotlib.pyplot import connect
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 
@@ -23,7 +19,7 @@ class Recipe:
 
     @staticmethod
     def validate_recipe(data):
-        is_valid = True # we assume this is true
+        is_valid = True
         if len(data["recipe_name"]) < 4 and not data["recipe_name"].isalpha():
             flash("Recipe name must be at least 3 characters and must be all alphabetical", "err_recipe_name")
             is_valid = False

@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, redirect, session, request
+from flask import render_template, redirect, session
 
 from flask_app.models import model_recipe
 

@@ -1,5 +1,5 @@
 from flask_app import app, bcrypt
-from flask import Flask, render_template, request, redirect, session, flash
+from flask import request, redirect, session
 
 # This imports model file
 from flask_app.models import model_user

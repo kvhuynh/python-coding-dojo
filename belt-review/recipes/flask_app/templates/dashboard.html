@@ -10,17 +10,18 @@
         <title>Dashboard</title>
     </head>
     <body>
-        <div class="container bg test">
+        <div class="container">
             <h1>Welcome {{user}}!</h1>
-            <div class="container d-flex">
+            <div class="d-flex justify-content-between">
                 <p>All posted recipes:</p>
-                <div class="container d-flex align-items-start">
-                    <a href="/recipe/new">+ Create </a>
+                <div>
+                    <a href="/recipe/new">
+                        <button type="submit" class="btn btn-success ">Create</button>
+                    </a>
                     <a href="/user/logout">
                         <button type="submit" class="btn btn-primary ">Logout</button>
                     </a>
                 </div>
-
             </div>
             <table class="table">
                 <thead>
